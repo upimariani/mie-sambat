@@ -58,7 +58,7 @@ class cBahanBaku extends CI_Controller
 					'keterangan' => $this->input->post('keterangan'),
 					'harga_supplier' => $this->input->post('harga'),
 					'stok_min' => '0',
-					'eoq' => '0',
+					'eoq_in' => '0',
 					'stok_gudang' => '0',
 					'gambar' => $upload_data['file_name']
 				);

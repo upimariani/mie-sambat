@@ -13,7 +13,7 @@
 						<i class="ti-search"></i>
 					</a>
 					<a href="index.html">
-						<img class="img-fluid" src="<?= base_url('asset/guruable-master/') ?>assets/images/logo.png" alt="Theme-Logo" />
+						<img class="img-fluid" src="<?= base_url('asset/guruable-master/') ?>assets/images/Mie.png" alt="Theme-Logo" />
 					</a>
 					<a class="mobile-options">
 						<i class="ti-more"></i>

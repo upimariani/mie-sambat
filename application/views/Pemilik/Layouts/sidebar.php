@@ -46,7 +46,7 @@
 								<img class="img-40 img-radius" src="<?= base_url('asset/guruable-master/') ?>assets/images/avatar-4.jpg" alt="User-Profile-Image">
 								<div class="user-details">
 									<span>John Doe</span>
-									<span id="more-details">Admin<i class="ti-angle-down"></i></span>
+									<span id="more-details">Pemilik<i class="ti-angle-down"></i></span>
 								</div>
 							</div>
 
@@ -62,7 +62,7 @@
 						<div class="pcoded-navigatio-lavel" data-i18n="nav.category.navigation">Layout</div>
 						<ul class="pcoded-item pcoded-left-item">
 							<li>
-								<a href="<?= base_url('Admin/cDashboard') ?>">
+								<a href="<?= base_url('Pemilik/cDashboard') ?>">
 									<span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
 									<span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
 									<span class="pcoded-mcaret"></span>
@@ -70,29 +70,22 @@
 							</li>
 
 						</ul>
-						<div class="pcoded-navigatio-lavel" data-i18n="nav.category.forms">Kelola Data</div>
 						<ul class="pcoded-item pcoded-left-item">
 							<li>
-								<a href="<?= base_url('Admin/cPengguna') ?>">
-									<span class="pcoded-micon"><i class="ti-user"></i><b>FC</b></span>
-									<span class="pcoded-mtext" data-i18n="nav.form-components.main">Pengguna</span>
+								<a href="<?= base_url('Pemilik/cLaporan') ?>">
+									<span class="pcoded-micon"><i class="ti-book"></i><b>FC</b></span>
+									<span class="pcoded-mtext" data-i18n="nav.form-components.main">Laporan Pemesanan</span>
 									<span class="pcoded-mcaret"></span>
 								</a>
 							</li>
 							<li>
-								<a href="<?= base_url('Admin/cKategori') ?>">
-									<span class="pcoded-micon"><i class="ti-tag"></i><b>FC</b></span>
-									<span class="pcoded-mtext" data-i18n="nav.form-components.main">Kategori</span>
+								<a href="<?= base_url('Pemilik/cLaporan/analisis') ?>">
+									<span class="pcoded-micon"><i class="ti-book"></i><b>FC</b></span>
+									<span class="pcoded-mtext" data-i18n="nav.form-components.main">Laporan Analisis</span>
 									<span class="pcoded-mcaret"></span>
 								</a>
 							</li>
-							<li>
-								<a href="<?= base_url('Admin/cBahanBaku') ?>">
-									<span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
-									<span class="pcoded-mtext" data-i18n="nav.form-components.main">Bahan Baku</span>
-									<span class="pcoded-mcaret"></span>
-								</a>
-							</li>
+
 						</ul>
 
 

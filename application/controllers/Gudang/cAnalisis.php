@@ -83,7 +83,7 @@ class cAnalisis extends CI_Controller
 		//memperaharui data barang terbaru
 		$dt_barang = array(
 			'stok_min' => $rop,
-			'eoq' => $eoq
+			'eoq_in' => $eoq
 		);
 		$this->db->where('id_barang', $id_barang);
 		$this->db->update('barang', $dt_barang);
