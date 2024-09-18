@@ -39,7 +39,7 @@
 											</thead>
 											<tbody>
 												<?php
-												$bb = $this->db->query("SELECT * FROM `barang` JOIN kategori ON barang.id_kategori=kategori.id_kategori WHERE eoq != '0'")->result();
+												$bb = $this->db->query("SELECT * FROM `barang` JOIN kategori ON barang.id_kategori=kategori.id_kategori WHERE eoq_in != '0'")->result();
 												foreach ($bb as $key => $value) {
 												?>
 													<tr>
@@ -49,7 +49,7 @@
 																<p class="d-inline-block m-l-20"><?= $value->nama_barang ?></p>
 															</div>
 														</td>
-														<td><?= $value->eoq ?> <?= $value->keterangan ?></td>
+														<td><?= $value->eoq_in ?> <?= $value->keterangan ?></td>
 														<td><?= $value->stok_min ?> <?= $value->keterangan ?></td>
 														<td><?= $value->stok_gudang ?> <?= $value->keterangan ?> <?php if ($value->stok_gudang >= $value->stok_min) {
 																													?>

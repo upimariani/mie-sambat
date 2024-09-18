@@ -92,7 +92,7 @@
 													<?= $value->nama_barang ?><span class="badge badge-warning"><?= $value->keterangan ?></span></td>
 												<td>Rp. <?= number_format($value->harga_supplier)  ?></td>
 												<td><?= $value->stok_min ?></td>
-												<td><?= $value->eoq ?></td>
+												<td><?= $value->eoq_in ?></td>
 												<td><?= $value->stok_gudang ?></td>
 
 												<td> <a href="<?= base_url('Admin/cBahanBaku/update/' . $value->id_barang) ?>" class="btn btn-success btn-outline-success btn-icon"><i class="icofont icofont-edit"></i></a>
