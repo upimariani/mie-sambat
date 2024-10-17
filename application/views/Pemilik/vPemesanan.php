@@ -44,6 +44,7 @@
 							</div>
 							<?php
 							$periode = $this->db->query("SELECT MONTH(tgl) as bulan, YEAR(tgl) as tahun FROM `transaksi` WHERE stat_transaksi='3' GROUP BY MONTH(tgl), YEAR(tgl)")->result();
+							$tahun = $this->db->query("SELECT MONTH(tgl) as bulan, YEAR(tgl) as tahun FROM `transaksi` WHERE stat_transaksi='3' GROUP BY YEAR(tgl)")->result();
 							?>
 							<hr>
 							<form action="<?= base_url('Pemilik/cLaporan/pemesanan') ?>" method="POST">
@@ -92,7 +93,7 @@
 										<select name="tahun" class="form-control" required>
 											<option value="">Pilih Salah Satu Tahun</option>
 											<?php
-											foreach ($periode as $key => $value) {
+											foreach ($tahun as $key => $value) {
 											?>
 												<option value="<?= $value->tahun ?>"><?= $value->tahun ?></option>
 											<?php

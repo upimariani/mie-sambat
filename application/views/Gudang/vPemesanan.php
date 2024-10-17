@@ -56,7 +56,7 @@
 								</div>
 								<div class="card-block accordion-block">
 									<div id="accordion" role="tablist" aria-multiselectable="true">
-										<div class="accordion-panel">
+										<!-- <div class="accordion-panel">
 											<div class="accordion-heading" role="tab" id="headingOne">
 												<h3 class="card-title accordion-title">
 													<a class="accordion-msg" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -133,11 +133,11 @@
 
 												</div>
 											</div>
-										</div>
+										</div> -->
 										<div class="accordion-panel">
 											<div class="accordion-heading" role="tab" id="headingTwo">
 												<h3 class="card-title accordion-title">
-													<a class="accordion-msg" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+													<a class="btn btn-warning accordion-msg" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
 														Menunggu Konfirmasi
 													</a>
 												</h3>
@@ -153,7 +153,7 @@
 																	<th>Tanggal</th>
 																	<th>Total Pembayaran</th>
 																	<th>Status Pemesanan</th>
-																	<th>Bukti Pembayaran</th>
+																	<!-- <th>Bukti Pembayaran</th> -->
 																	<th>Pemesanan Bahan Baku</th>
 																</tr>
 															</thead>
@@ -189,7 +189,7 @@
 																				}
 																				?>
 																			</td>
-																			<td><a href="<?= base_url('asset/bayar/' . $value->bukti_bayar) ?>">Bukti Pembayaran</a></td>
+																			<!-- <td><a href="<?= base_url('asset/bayar/' . $value->bukti_bayar) ?>">Bukti Pembayaran</a></td> -->
 
 																			<?php
 																			$dt_barang = $this->db->query("SELECT * FROM `transaksi` JOIN detail_transaksi ON transaksi.id_transaksi=detail_transaksi.id_transaksi JOIN barang ON barang.id_barang=detail_transaksi.id_barang WHERE transaksi.id_transaksi='" . $value->id_transaksi . "'")->result();
@@ -211,7 +211,7 @@
 										<div class="accordion-panel">
 											<div class=" accordion-heading" role="tab" id="headingThree">
 												<h3 class="card-title accordion-title">
-													<a class="accordion-msg" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+													<a class="btn btn-info accordion-msg" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
 														Pesanan Dikirim
 													</a>
 												</h3>
@@ -219,7 +219,7 @@
 											<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
 												<div class="accordion-content accordion-desc">
 													<div class="table-responsive">
-														<table class="table" id="kirim">
+														<table class="table table-striped" id="belum_bayar">
 															<thead>
 																<tr>
 																	<th>#</th>
@@ -227,8 +227,8 @@
 																	<th>Tanggal</th>
 																	<th>Total Pembayaran</th>
 																	<th>Status Pemesanan</th>
-																	<th>Bukti Pembayaran</th>
-																	<th>Pemesanan Bahan Baku</th>
+																	<!-- <th>Bukti Pembayaran</th> -->
+																	<th>Bahan Baku</th>
 																	<th>Action</th>
 																</tr>
 															</thead>
@@ -264,7 +264,7 @@
 																				}
 																				?>
 																			</td>
-																			<td><a href="<?= base_url('asset/bayar/' . $value->bukti_bayar) ?>">Bukti Pembayaran</a></td>
+																			<!-- <td><a href="<?= base_url('asset/bayar/' . $value->bukti_bayar) ?>">Bukti Pembayaran</a></td> -->
 
 																			<?php
 																			$dt_barang = $this->db->query("SELECT * FROM `transaksi` JOIN detail_transaksi ON transaksi.id_transaksi=detail_transaksi.id_transaksi JOIN barang ON barang.id_barang=detail_transaksi.id_barang WHERE transaksi.id_transaksi='" . $value->id_transaksi . "'")->result();
@@ -272,7 +272,12 @@
 																			<td><?php foreach ($dt_barang as $key => $value) {
 																					echo $value->nama_barang . ' | Qty.' . $value->qty . '<br>';
 																				} ?></td>
-																			<td><a href="<?= base_url('Gudang/cPemesanan/diterima/' . $value->id_transaksi) ?>" class="btn btn-success">Pesanan Diterima</a></td>
+																			<td>
+																				<?= form_open_multipart('Gudang/cPemesanan/diterima/' . $value->id_transaksi) ?>
+																				<input type="file" class="form-control" name="bayar">
+																				<button type="submit" class="btn btn-outline-success btn-sm">Bayar</button>
+																				</form>
+																			</td>
 
 																		</tr>
 																<?php
@@ -287,7 +292,7 @@
 										<div class="accordion-panel">
 											<div class=" accordion-heading" role="tab" id="headingFour">
 												<h3 class="card-title accordion-title">
-													<a class="accordion-msg" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+													<a class="btn btn-success accordion-msg" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
 														Pesanan Selesai
 													</a>
 												</h3>

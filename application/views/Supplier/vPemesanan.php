@@ -56,7 +56,7 @@
 								</div>
 								<div class="card-block accordion-block">
 									<div id="accordion" role="tablist" aria-multiselectable="true">
-										<div class="accordion-panel">
+										<!-- <div class="accordion-panel">
 											<div class="accordion-heading" role="tab" id="headingOne">
 												<h3 class="card-title accordion-title">
 													<a class="accordion-msg" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -127,7 +127,7 @@
 
 												</div>
 											</div>
-										</div>
+										</div> -->
 										<div class="accordion-panel">
 											<div class="accordion-heading" role="tab" id="headingTwo">
 												<h3 class="card-title accordion-title">
@@ -147,7 +147,7 @@
 																	<th>Tanggal</th>
 																	<th>Total Pembayaran</th>
 																	<th>Status Pemesanan</th>
-																	<th>Bukti Pembayaran</th>
+																	<!-- <th>Bukti Pembayaran</th> -->
 																	<th>Pemesanan Bahan Baku</th>
 																	<th>Action</th>
 																</tr>
@@ -184,7 +184,7 @@
 																				}
 																				?>
 																			</td>
-																			<td><a href="<?= base_url('asset/bayar/' . $value->bukti_bayar) ?>">Bukti Pembayaran</a></td>
+																			<!-- <td><a href="<?= base_url('asset/bayar/' . $value->bukti_bayar) ?>">Bukti Pembayaran</a></td> -->
 																			<?php
 																			$dt_barang = $this->db->query("SELECT * FROM `transaksi` JOIN detail_transaksi ON transaksi.id_transaksi=detail_transaksi.id_transaksi JOIN barang ON barang.id_barang=detail_transaksi.id_barang WHERE transaksi.id_transaksi='" . $value->id_transaksi . "'")->result();
 																			?>
@@ -295,6 +295,7 @@
 																	<th>Total Pembayaran</th>
 																	<th>Status Pemesanan</th>
 																	<th>Pemesanan Bahan Baku</th>
+																	<th>Bukti Pembayaran</th>
 																</tr>
 															</thead>
 															<tbody>
@@ -335,7 +336,7 @@
 																			<td><?php foreach ($dt_barang as $key => $value) {
 																					echo $value->nama_barang . ' | Qty.' . $value->qty . '<br>';
 																				} ?></td>
-
+																			<td><a href="<?= base_url('asset/bayar/' . $value->bukti_bayar) ?>">Bukti Pembayaran</a></td>
 																		</tr>
 																<?php
 																	}

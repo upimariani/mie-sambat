@@ -49,7 +49,7 @@ class cPemesanan extends CI_Controller
 			'total_bayar' => $this->cart->total(),
 			'stat_pembayaran' => '0',
 			'bukti_bayar' => '0',
-			'stat_transaksi' => '0'
+			'stat_transaksi' => '1'
 		);
 		$this->db->insert('transaksi', $data);
 
@@ -67,7 +67,40 @@ class cPemesanan extends CI_Controller
 		$this->session->set_flashdata('success', 'Data pemesanan berhasil disimpan!');
 		redirect('Gudang/cPemesanan');
 	}
-	public function bayar($id)
+	// public function bayar($id)
+	// {
+	// 	$config['upload_path']          = './asset/bayar';
+	// 	$config['allowed_types']        = 'gif|jpg|png|jpeg';
+	// 	$config['max_size']             = 500000;
+
+	// 	$this->load->library('upload', $config);
+
+
+	// 	if (!$this->upload->do_upload('bayar')) {
+
+	// 		$data = array(
+	// 			'pemesanan' => $this->db->query("SELECT * FROM `transaksi` JOIN pengguna ON pengguna.id_pengguna=transaksi.id_pengguna")->result()
+	// 		);
+	// 		$this->load->view('Gudang/Layouts/head');
+	// 		$this->load->view('Gudang/Layouts/sidebar');
+	// 		$this->load->view('Gudang/vPemesanan', $data);
+	// 		$this->load->view('Gudang/Layouts/footer');
+	// 	} else {
+
+	// 		$upload_data = $this->upload->data();
+	// 		$data = array(
+	// 			'stat_pembayaran' => '1',
+	// 			'stat_transaksi' => '3',
+	// 			'bukti_bayar' => $upload_data['file_name']
+	// 		);
+	// 		$this->db->where('id_transaksi', $id);
+	// 		$this->db->update('transaksi', $data);
+
+	// 		$this->session->set_flashdata('success', 'Pembayaran berhasil dikirim!');
+	// 		redirect('Gudang/cPemesanan');
+	// 	}
+	// }
+	public function diterima($id)
 	{
 		$config['upload_path']          = './asset/bayar';
 		$config['allowed_types']        = 'gif|jpg|png|jpeg';
@@ -86,41 +119,29 @@ class cPemesanan extends CI_Controller
 			$this->load->view('Gudang/vPemesanan', $data);
 			$this->load->view('Gudang/Layouts/footer');
 		} else {
+			//memperbaharui data stok di gudang
+			$data_transaksi = $this->db->query("SELECT * FROM `transaksi` JOIN detail_transaksi ON transaksi.id_transaksi=detail_transaksi.id_transaksi JOIN barang ON barang.id_barang=detail_transaksi.id_barang WHERE transaksi.id_transaksi='" . $id . "'")->result();
+			foreach ($data_transaksi as $key => $value) {
+				$stok = array(
+					'stok_gudang' => $value->qty + $value->stok_gudang
+				);
+				$this->db->where('id_barang', $value->id_barang);
+				$this->db->update('barang', $stok);
+			}
 
+			//memperbaharui status transaksi -> selesai
 			$upload_data = $this->upload->data();
 			$data = array(
 				'stat_pembayaran' => '1',
-				'stat_transaksi' => '1',
+				'stat_transaksi' => '3',
 				'bukti_bayar' => $upload_data['file_name']
 			);
 			$this->db->where('id_transaksi', $id);
 			$this->db->update('transaksi', $data);
 
-			$this->session->set_flashdata('success', 'Pembayaran berhasil dikirim!');
+			$this->session->set_flashdata('success', 'Pesanan berhasil diterima!');
 			redirect('Gudang/cPemesanan');
 		}
-	}
-	public function diterima($id)
-	{
-		//memperbaharui data stok di gudang
-		$data_transaksi = $this->db->query("SELECT * FROM `transaksi` JOIN detail_transaksi ON transaksi.id_transaksi=detail_transaksi.id_transaksi JOIN barang ON barang.id_barang=detail_transaksi.id_barang WHERE transaksi.id_transaksi='" . $id . "'")->result();
-		foreach ($data_transaksi as $key => $value) {
-			$stok = array(
-				'stok_gudang' => $value->qty + $value->stok_gudang
-			);
-			$this->db->where('id_barang', $value->id_barang);
-			$this->db->update('barang', $stok);
-		}
-
-		//memperbaharui status transaksi -> selesai
-		$data = array(
-			'stat_transaksi' => '3'
-		);
-		$this->db->where('id_transaksi', $id);
-		$this->db->update('transaksi', $data);
-
-		$this->session->set_flashdata('success', 'Pesanan berhasil diterima!');
-		redirect('Gudang/cPemesanan');
 	}
 }
 
