@@ -17,7 +17,7 @@
 	<meta name="keywords" content=" Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
 	<meta name="author" content="CodedThemes">
 	<!-- Favicon icon -->
-	<link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="<?= base_url('asset/logo.jpg') ?>" type="image/x-icon">
 	<!-- Google font-->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
 	<!-- Required Fremwork -->
@@ -78,14 +78,16 @@
 					<!-- Authentication card start -->
 					<div class="login-card card-block auth-body mr-auto ml-auto">
 						<form method="POST" action="<?= base_url('cLogin') ?>" class="md-float-material">
-							<!-- <div class="text-center">
-								<img src="assets/images/auth/logo-dark.png" alt="logo.png">
-							</div> -->
+
 
 							<div class="auth-box">
 								<div class="row m-b-20">
 									<div class="col-md-12">
-										<h3 class="text-left txt-primary">Sign In - Mie Sambat</h3>
+										<div class="text-center">
+											<img style="width: 130px;" src="<?= base_url('asset/logo.jpg') ?>" alt="logo.png">
+											<h3 class="txt-primary">Sign In - Mie Sambat</h3>
+										</div>
+
 										<?php
 
 

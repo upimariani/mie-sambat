@@ -13,7 +13,7 @@
 						<i class="ti-search"></i>
 					</a>
 					<a href="index.html">
-						<img class="img-fluid" src="<?= base_url('asset/guruable-master/') ?>assets/images/Mie.png" alt="Theme-Logo" />
+						<h4>Mie Sambat</h4>
 					</a>
 					<a class="mobile-options">
 						<i class="ti-more"></i>
@@ -43,7 +43,7 @@
 					<div class="pcoded-inner-navbar main-menu">
 						<div class="">
 							<div class="main-menu-header">
-								<img class="img-40 img-radius" src="<?= base_url('asset/guruable-master/') ?>assets/images/avatar-4.jpg" alt="User-Profile-Image">
+								<img class="img-40 img-radius" src="<?= base_url('asset/logo.jpg') ?>" alt="User-Profile-Image">
 								<div class="user-details">
 									<span>John Doe</span>
 									<span id="more-details">Gudang<i class="ti-angle-down"></i></span>
