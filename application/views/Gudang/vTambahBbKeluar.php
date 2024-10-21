@@ -49,7 +49,7 @@
 				<!-- Page-body start -->
 				<div class="page-body">
 					<div class="row">
-						<div class="col-sm-6">
+						<div class="col-sm-5">
 							<!-- Basic Form Inputs card start -->
 							<div class="card">
 								<div class="card-header">
@@ -66,8 +66,8 @@
 									<form action="<?= base_url('Gudang/cBbKeluar/create') ?>" method="POST">
 
 										<div class="form-group row">
-											<label class="col-sm-2 col-form-label">Nama Bahan Baku</label>
-											<div class="col-sm-10">
+											<label class="col-sm-4 col-form-label">Nama Bahan Baku</label>
+											<div class="col-sm-8">
 												<select class="form-control" name="bb" id="bb">
 													<option value=" ">Pilih Salah Satu Bahan Baku</option>
 													<?php
@@ -86,27 +86,27 @@
 										</div>
 										<hr>
 										<div class="form-group row">
-											<label class="col-sm-2 col-form-label">Nama Bahan Baku</label>
-											<div class="col-sm-10">
+											<label class="col-sm-4 col-form-label">Nama Bahan Baku</label>
+											<div class="col-sm-8">
 												<input type="text" name="nama" class="nama form-control" readonly>
 											</div>
 										</div>
 										<div class="form-group row">
-											<label class="col-sm-2 col-form-label">Harga Bahan Baku</label>
-											<div class="col-sm-10">
+											<label class="col-sm-4 col-form-label">Harga Bahan Baku</label>
+											<div class="col-sm-8">
 												<input type="text" name="harga" class="harga form-control" readonly>
 											</div>
 										</div>
 										<div class="form-group row">
-											<label class="col-sm-2 col-form-label">Stok Tersedia di Gudang</label>
-											<div class="col-sm-10">
+											<label class="col-sm-4 col-form-label">Stok Tersedia di Gudang</label>
+											<div class="col-sm-8">
 												<input type="text" name="stok" class="stok form-control" readonly>
 											</div>
 										</div>
 										<hr>
 										<div class="form-group row">
-											<label class="col-sm-2 col-form-label">Quantity Keluar</label>
-											<div class="col-sm-10">
+											<label class="col-sm-4 col-form-label">Quantity Keluar</label>
+											<div class="col-sm-8">
 												<input type="text" name="qty" class="form-control" placeholder="Masukkan Quantity Bahan Baku Keluar">
 												<?= form_error('qty', '<small class="text-danger">', '</small>') ?>
 											</div>
@@ -122,7 +122,7 @@
 							</div>
 
 						</div>
-						<div class="col-sm-6">
+						<div class="col-sm-7">
 							<div class="card">
 								<div class="card-header">
 									<h5>Keranjang Bahan Baku</h5>
@@ -137,7 +137,7 @@
 										</ul>
 									</div>
 								</div>
-								<div class="card-block table-border-style">
+								<div class="card-block ">
 									<div class="table-responsive">
 										<form action="<?= base_url('Gudang/cBbKeluar/add') ?>" method="POST">
 											<table class="table" id="belum_bayar">
