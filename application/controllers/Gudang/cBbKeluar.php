@@ -68,6 +68,50 @@ class cBbKeluar extends CI_Controller
 			);
 			$this->db->where('id_barang', $value['id']);
 			$this->db->update('barang', $stok);
+
+			// notif wa 
+			$token = "VXAFPXwtC7eGDY4yJTbk";
+			$target = '085156727368';
+			// $remark = $this->input->post('remark');
+			// $nama_barang = $this->input->post('nama_barang');
+			// $stock = $this->input->post('stock');
+
+			$curl = curl_init();
+
+			curl_setopt_array($curl, array(
+				CURLOPT_URL => 'https://api.fonnte.com/send',
+				CURLOPT_RETURNTRANSFER => true,
+				CURLOPT_ENCODING => '',
+				CURLOPT_MAXREDIRS => 10,
+				CURLOPT_TIMEOUT => 0,
+				CURLOPT_FOLLOWLOCATION => true,
+				CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+				CURLOPT_CUSTOMREQUEST => 'POST',
+				CURLOPT_POSTFIELDS => array(
+					'target' => $target,
+					'message' => "Hallo Pemilik Toko Mie Sambat. berikut ini adalah informasi terkait stock barang digudang: 
+					
+					" . "nama_barang : " . 1 . " 
+					stock : " . 1 . "
+					
+					
+					Terimakasih. ",
+				),
+				CURLOPT_HTTPHEADER => array(
+					"Authorization: $token"
+				),
+			));
+
+			$response = curl_exec($curl);
+			if (curl_errno($curl)) {
+				$error_msg = curl_error($curl);
+			}
+			curl_close($curl);
+
+			if (isset($error_msg)) {
+				echo $error_msg;
+			}
+			echo $response;
 		}
 		$this->cart->destroy();
 		$this->session->set_flashdata('success', 'Data Bahan Baku berhasil disimpan!');
@@ -82,6 +126,17 @@ class cBbKeluar extends CI_Controller
 		$this->db->delete('dbarang_keluar');
 		$this->session->set_flashdata('success', 'Data Bahan Baku Keluar berhasil dihapus!');
 		redirect('Gudang/cBbKeluar');
+	}
+
+	// kirim notif wa
+	public function send()
+	{
+
+		$no_hp = '085156727368';
+		$remark = 'Coba test';
+
+		$result = file_get_contents("http://localhost:5000/" . "msg?number=" . $no_hp . "&message=" . $remark);
+		$this->session->set_flashdata('pesan', 'Berhasil Dikirim');
 	}
 }
 
